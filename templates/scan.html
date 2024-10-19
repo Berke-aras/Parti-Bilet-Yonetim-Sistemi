@@ -153,17 +153,27 @@
                     console.error("QR Kod tarayıcı başlatılamadı: ", err);
                 });
 
+            // Dosya yükleme ile QR kod okuma
             document
                 .getElementById("qr-file-input")
                 .addEventListener("change", function (event) {
                     var file = event.target.files[0];
                     if (file) {
+                        console.log("Dosya yüklendi: ", file.name); // Dosya yüklendi logu
+
                         html5QrCode
                             .scanFile(file, true)
                             .then(onScanSuccess)
                             .catch((err) => {
                                 console.error("Dosya taranamadı: ", err);
+                                document.getElementById(
+                                    "result-message"
+                                ).innerText =
+                                    "Dosya taranamadı. Lütfen geçerli bir QR kod içeren görsel yükleyin.";
                             });
+                    } else {
+                        document.getElementById("result-message").innerText =
+                            "Lütfen bir dosya seçin.";
                     }
                 });
         </script>
