@@ -1,5 +1,5 @@
 
-<p align="center"> <img src="https://tenor.com/view/menhera-gif-6045874186498781362" alt="Anime Fansub GIF" width="400" /> </p>
+<p align="center"> <img src="https://media1.tenor.com/m/IAkzeTqB_RMAAAAC/rin-tohsaka-carnival-pantasm.gif" alt="Anime Fansub GIF" width="400" /> </p>
 
 
 # 🎫 Parti Bilet Yönetim Sistemi
