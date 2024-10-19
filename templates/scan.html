@@ -96,18 +96,41 @@
                     code = qrCodeMessage.split(":")[1].trim(); // Sadece kodu al
                 }
 
-                document.getElementById(
-                    "result-message"
-                ).innerText = `Kod Türü: ${codeType}, Kod: ${code}`;
+                // QR kod okuma işlemini durdur
+                html5QrCode
+                    .stop()
+                    .then(() => {
+                        document.getElementById(
+                            "result-message"
+                        ).innerText = `Kod Türü: ${codeType}, Kod: ${code}`;
 
-                fetch(`/scan/${codeType}/${code}`, { method: "GET" })
-                    .then((response) => response.text())
-                    .then((data) => {
-                        document.getElementById("result-message").innerText =
-                            data;
+                        // Taranan kodun sonucunu fetch ile al
+                        fetch(`/scan/${codeType}/${code}`, { method: "GET" })
+                            .then((response) => response.text())
+                            .then((data) => {
+                                document.getElementById(
+                                    "result-message"
+                                ).innerText = data;
+
+                                // QR kod tarayıcısını 5 saniye sonra yeniden başlat
+                                setTimeout(() => {
+                                    html5QrCode.start(
+                                        { facingMode: "environment" },
+                                        {
+                                            fps: 10,
+                                            qrbox: { width: 250, height: 250 },
+                                        },
+                                        onScanSuccess,
+                                        onScanError
+                                    );
+                                }, 5000); // 5 saniye bekleme süresi
+                            })
+                            .catch((error) => {
+                                console.error("Error:", error);
+                            });
                     })
-                    .catch((error) => {
-                        console.error("Error:", error);
+                    .catch((err) => {
+                        console.error("QR Kod tarayıcı durdurulamadı: ", err);
                     });
             }
 
