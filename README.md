@@ -1,7 +1,7 @@
 
 <p align="center"> <img src="https://media1.tenor.com/m/U-dCikr2sLIAAAAC/menhera.gif" alt="Anime Fansub GIF" width="400" /> </p>
 
-
+# Vercel üzerinde database işlemleri gerçekleşmediği için hata alabilirsiniz!
 # 🎫 Parti Bilet Yönetim Sistemi
 Bu sistem, partiye katılacak kişilerin biletlerini ve içecek haklarını QR kodlarıyla yönetmek için geliştirilmiştir. Sistem, katılımcıların giriş sayısını takip eder ve içecek haklarını doğrular.
 
